@@ -13,6 +13,7 @@
                 {% for item in cart %}
                 <div class="cart-item">
                     <h3>{{ item.hotel.name }}</h3>
+                    <p>Номер: {{ item.room.name }}</p>
                     <p>Даты: {{ item.checkin }} - {{ item.checkout }}</p>
                     <p>Гости: {{ item.guests }}</p>
                     <p class="price">${{ item.price }}</p>
@@ -20,7 +21,7 @@
                 {% endfor %}
             </div>
             <div class="cart-total">
-                <h3>Итого: ${{ cart|sum(attribute='price') }}</h3>
+                <h3>Итого: ${{ cart_total }}</h3>
                 <button class="btn btn-primary">Оформить бронирование</button>
             </div>
         {% else %}

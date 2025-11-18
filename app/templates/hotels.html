@@ -50,15 +50,18 @@
     </section>
 </div>
 
+// app/templates/hotels.html
 <script>
 function addToCartDemo(hotelId) {
-    const hotel = {
-        id: hotelId,
-        name: 'Отель ' + hotelId,
-        city: 'Город'
-    };
+    // Даты по умолчанию, т.к. на этой странице нет полей ввода
+    const checkin = '2024-01-15';
+    const checkout = '2024-01-18';
+    const guests = 2;
     
-    addToCart(hotel, 'Стандартный номер', 150, '2024-01-15', '2024-01-18', 2);
+    // Вызываем функцию showRoomSelection из /static/script.js, чтобы 
+    // показать модальное окно выбора номера.
+    // Эта функция (showRoomSelection) затем вызовет addToCartWithRoom.
+    showRoomSelection(hotelId, checkin, checkout, guests);
 }
 </script>
 {% endblock %}

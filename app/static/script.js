@@ -189,11 +189,13 @@ function updateCartDisplay() {
     }
 }
 
+// app/static/script.js
 function addToCartWithRoom(hotelId, roomId, roomName, price, checkin, checkout, guests) {
     const nights = calculateNights(checkin, checkout);
     const total = price * nights;
     
-    const cartItem = {
+    // --- 1. Объект для localStorage (для UI) ---
+    const cartItemForStorage = {
         id: 'cart_' + Date.now(),
         hotel_id: hotelId,
         room_type_id: roomId,
@@ -206,14 +208,36 @@ function addToCartWithRoom(hotelId, roomId, roomName, price, checkin, checkout, 
         total: total
     };
     
+    // --- 2. Объект для API бэкенда (строго по Pydantic-модели) ---
+    const apiItemPayload = {
+        hotel_id: hotelId,
+        room_type_id: roomId,
+        rate_id: "rate_1", // ВНИМАНИЕ: Это заглушка, т.к. UI не дает выбрать rate_id
+        checkin: checkin,
+        checkout: checkout,
+        guests: parseInt(guests, 10)
+    };
+
+    // --- 3. Сохраняем в localStorage ---
     const cart = getCart();
-    cart.push(cartItem);
+    cart.push(cartItemForStorage);
     saveCart(cart);
-    updateCartDisplay(); // Используем объединенную функцию
+    updateCartDisplay();
     closeModal();
     
-    // Используем showAlert из блока 3
-    showAlert(`Добавлено: ${roomName}! Всего: ${formatPrice(total)} за ${nights} ночи`, 'success');
+    // --- 4. ОТПРАВЛЯЕМ НА БЭКЕНД ---
+    addToCart(apiItemPayload)
+        .then(response => {
+            if (response.success) {
+                showAlert(`Добавлено: ${roomName}! Всего: ${formatPrice(total)} за ${nights} ночи`, 'success');
+            } else {
+                showError('Ошибка бэкенда при добавлении в корзину');
+            }
+        })
+        .catch(err => {
+            console.error('Failed to save to backend:', err);
+            // showError уже сработает внутри apiCall
+        });
 }
 
 function viewCart() {

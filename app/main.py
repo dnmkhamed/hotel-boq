@@ -27,6 +27,7 @@ from core.service import (
 )
 from core.compose import create_booking_pipeline
 import asyncio
+from pydantic import BaseModel
 
 
 app = FastAPI(title="Hotel Booking FP", version="1.0.0")
@@ -34,6 +35,18 @@ app = FastAPI(title="Hotel Booking FP", version="1.0.0")
 # Mount static files
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 templates = Jinja2Templates(directory="app/templates")
+
+
+class CartItemPayload(BaseModel):
+    hotel_id: str
+    room_type_id: str
+    rate_id: str
+    checkin: str
+    checkout: str
+    guests: int
+
+
+
 
 # Global state (in production, use proper database)
 class State:
@@ -291,17 +304,56 @@ async def labs_page(request: Request):
     return templates.TemplateResponse("labs.html", get_template_context(request))
 
 
+# app/main.py
+
 @app.get("/cart", response_class=HTMLResponse)
 async def cart_page(request: Request):
     """Страница корзины"""
+    
+    # --- НОВАЯ ЛОГИКА ОБОГАЩЕНИЯ ---
+    
+    # Создаем словари для быстрого поиска
+    hotels_by_id = {h.id: h for h in state.hotels}
+    rooms_by_id = {r.id: r for r in state.room_types}
+
+    rich_cart = []
+    total_price = 0
+
+    for item in state.cart:
+        hotel = hotels_by_id.get(item.hotel_id)
+        room = rooms_by_id.get(item.room_type_id)
+
+        # Используем quote_offer для получения цены (она мемоизирована)
+        quote = quote_offer(
+            hotel_id=item.hotel_id,
+            room_type_id=item.room_type_id,
+            rate_id=item.rate_id,
+            checkin=item.checkin,
+            checkout=item.checkout,
+            guests=item.guests
+        )
+        price = quote.get('total_price', 0) # Получаем цену из мемо-функции
+        total_price += price
+
+        rich_cart.append({
+            'item_id': item.id,
+            'hotel': hotel,  # Теперь это полный объект Hotel
+            'room': room,    # Теперь это полный объект RoomType
+            'checkin': item.checkin,
+            'checkout': item.checkout,
+            'guests': item.guests,
+            'price': price   # Рассчитанная цена
+        })
+    # --- КОНЕЦ НОВОЙ ЛОГИКИ ---
+
     return templates.TemplateResponse(
         "cart.html", 
         get_template_context(
             request,
-            cart=state.cart
+            cart=rich_cart,          # <-- Передаем новый "богатый" список
+            cart_total=total_price   # <-- Передаем итоговую сумму
         )
     )
-
 # --- API Endpoints ---
 
 @app.get("/api/hotels")
@@ -342,20 +394,23 @@ async def get_hotels(
     }
 
 
+# app/main.py (строка 347)
 @app.post("/api/cart")
-async def add_to_cart(item: Dict[str, Any]):
+async def add_to_cart(item: CartItemPayload):  # <--- ИЗМЕНЕНИЕ ЗДЕСЬ
     """Add item to cart."""
     cart_item = CartItem(
         id=f"cart_{uuid4().hex[:8]}",
-        hotel_id=item["hotel_id"],
-        room_type_id=item["room_type_id"],
-        rate_id=item["rate_id"],
-        checkin=item["checkin"],
-        checkout=item["checkout"],
-        guests=item["guests"]
+        hotel_id=item.hotel_id,         # <--- .hotel_id
+        room_type_id=item.room_type_id, # <--- .room_type_id
+        rate_id=item.rate_id,           # <--- .rate_id
+        checkin=item.checkin,           # <--- .checkin
+        checkout=item.checkout,         # <--- .checkout
+        guests=item.guests              # <--- .guests
     )
     
     state.cart = hold_item(state.cart, cart_item)
+    
+    # ... (остальной код)
     
     # Publish hold event
     await publish_hold_event({
