@@ -1,0 +1,398 @@
+{
+    "hotels": [
+      {
+        "id": "hotel_1",
+        "name": "Grand Plaza Hotel",
+        "stars": 5,
+        "city": "New York",
+        "features": ["wifi", "pool", "spa", "gym", "restaurant", "concierge"],
+        "description": "Luxury hotel in the heart of Manhattan with panoramic city views"
+      },
+      {
+        "id": "hotel_2",
+        "name": "Seaside Resort", 
+        "stars": 4,
+        "city": "Miami",
+        "features": ["beach", "pool", "restaurant", "spa", "water_sports"],
+        "description": "Beachfront resort with stunning ocean views and tropical gardens"
+      },
+      {
+        "id": "hotel_3",
+        "name": "Mountain Lodge",
+        "stars": 3,
+        "city": "Denver",
+        "features": ["wifi", "restaurant", "parking", "fireplace", "hiking"],
+        "description": "Cozy mountain lodge nestled in the Rocky Mountains"
+      },
+      {
+        "id": "hotel_4",
+        "name": "City Center Hotel",
+        "stars": 4,
+        "city": "Chicago",
+        "features": ["wifi", "gym", "restaurant", "business_center", "concierge"],
+        "description": "Modern hotel in downtown Chicago with excellent transport links"
+      },
+      {
+        "id": "hotel_5",
+        "name": "Garden Inn",
+        "stars": 3,
+        "city": "San Francisco",
+        "features": ["wifi", "breakfast", "garden", "parking", "family_rooms"],
+        "description": "Charming inn with beautiful gardens in historic district"
+      },
+      {
+        "id": "hotel_6",
+        "name": "Royal Palace Hotel",
+        "stars": 5,
+        "city": "Las Vegas",
+        "features": ["casino", "pool", "spa", "multiple_restaurants", "entertainment"],
+        "description": "Luxury hotel and casino on the famous Vegas Strip"
+      },
+      {
+        "id": "hotel_7",
+        "name": "Harbor View Hotel",
+        "stars": 4,
+        "city": "Seattle",
+        "features": ["harbor_view", "restaurant", "bar", "concierge", "business_center"],
+        "description": "Hotel with spectacular views of Seattle's waterfront"
+      },
+      {
+        "id": "hotel_8",
+        "name": "Historic Inn",
+        "stars": 3,
+        "city": "Boston",
+        "features": ["historic", "breakfast", "free_parking", "city_center", "wifi"],
+        "description": "Beautifully restored historic inn in downtown Boston"
+      },
+      {
+        "id": "hotel_9",
+        "name": "Business Tower",
+        "stars": 4,
+        "city": "Atlanta",
+        "features": ["business_center", "gym", "restaurant", "conference_rooms", "wifi"],
+        "description": "Modern business hotel with excellent meeting facilities"
+      },
+      {
+        "id": "hotel_10",
+        "name": "Sunset Resort",
+        "stars": 5,
+        "city": "Los Angeles",
+        "features": ["pool", "spa", "restaurant", "beach_access", "luxury_suites"],
+        "description": "Luxury beach resort with stunning Pacific Ocean sunsets"
+      }
+    ],
+    
+    "room_types": [
+      {
+        "id": "room_1",
+        "hotel_id": "hotel_1",
+        "name": "Deluxe King Room",
+        "capacity": 2,
+        "beds": ["king"],
+        "features": ["wifi", "tv", "ac", "minibar", "safe"],
+        "size": "45 m²"
+      },
+      {
+        "id": "room_2",
+        "hotel_id": "hotel_1",
+        "name": "Executive Suite",
+        "capacity": 3,
+        "beds": ["king", "sofa"],
+        "features": ["wifi", "tv", "ac", "minibar", "jacuzzi", "separate_living"],
+        "size": "65 m²"
+      },
+      {
+        "id": "room_3",
+        "hotel_id": "hotel_1",
+        "name": "Presidential Suite",
+        "capacity": 4,
+        "beds": ["king", "queen"],
+        "features": ["wifi", "multiple_tvs", "ac", "minibar", "jacuzzi", "dining_room"],
+        "size": "120 m²"
+      },
+      {
+        "id": "room_4",
+        "hotel_id": "hotel_1",
+        "name": "Standard Double",
+        "capacity": 2,
+        "beds": ["double"],
+        "features": ["wifi", "tv", "ac", "work_desk"],
+        "size": "35 m²"
+      },
+      {
+        "id": "room_5",
+        "hotel_id": "hotel_1",
+        "name": "Family Room",
+        "capacity": 4,
+        "beds": ["queen", "bunk"],
+        "features": ["wifi", "tv", "ac", "minifridge", "family_amenities"],
+        "size": "50 m²"
+      },
+      {
+        "id": "room_6",
+        "hotel_id": "hotel_2",
+        "name": "Ocean View Room",
+        "capacity": 2,
+        "beds": ["queen"],
+        "features": ["wifi", "tv", "ac", "balcony", "ocean_view"],
+        "size": "40 m²"
+      },
+      {
+        "id": "room_7",
+        "hotel_id": "hotel_2",
+        "name": "Beachfront Suite",
+        "capacity": 3,
+        "beds": ["king", "sofa"],
+        "features": ["wifi", "tv", "ac", "private_terrace", "beach_access"],
+        "size": "55 m²"
+      },
+      {
+        "id": "room_8",
+        "hotel_id": "hotel_2",
+        "name": "Garden Room",
+        "capacity": 2,
+        "beds": ["double"],
+        "features": ["wifi", "tv", "ac", "garden_view", "quiet_location"],
+        "size": "38 m²"
+      },
+      {
+        "id": "room_9",
+        "hotel_id": "hotel_2",
+        "name": "Pool View Room",
+        "capacity": 2,
+        "beds": ["queen"],
+        "features": ["wifi", "tv", "ac", "pool_view", "easy_pool_access"],
+        "size": "42 m²"
+      },
+      {
+        "id": "room_10",
+        "hotel_id": "hotel_2",
+        "name": "Penthouse Suite",
+        "capacity": 4,
+        "beds": ["king", "queen"],
+        "features": ["wifi", "multiple_tvs", "ac", "private_pool", "luxury_bathroom"],
+        "size": "85 m²"
+      },
+      {
+        "id": "room_11",
+        "hotel_id": "hotel_3",
+        "name": "Mountain View Room",
+        "capacity": 2,
+        "beds": ["queen"],
+        "features": ["wifi", "tv", "fireplace", "mountain_view", "cozy"],
+        "size": "38 m²"
+      },
+      {
+        "id": "room_12",
+        "hotel_id": "hotel_3",
+        "name": "Rustic Suite",
+        "capacity": 3,
+        "beds": ["king", "single"],
+        "features": ["wifi", "tv", "fireplace", "wooden_decor", "spacious"],
+        "size": "50 m²"
+      },
+      {
+        "id": "room_13",
+        "hotel_id": "hotel_3",
+        "name": "Standard Room",
+        "capacity": 2,
+        "beds": ["double"],
+        "features": ["wifi", "tv", "basic_amenities", "comfortable"],
+        "size": "32 m²"
+      },
+      {
+        "id": "room_14",
+        "hotel_id": "hotel_3",
+        "name": "Family Cabin",
+        "capacity": 5,
+        "beds": ["queen", "bunk", "single"],
+        "features": ["wifi", "tv", "fireplace", "family_friendly", "games"],
+        "size": "60 m²"
+      },
+      {
+        "id": "room_15",
+        "hotel_id": "hotel_3",
+        "name": "Honeymoon Suite",
+        "capacity": 2,
+        "beds": ["king"],
+        "features": ["wifi", "tv", "fireplace", "romantic_decor", "special_amenities"],
+        "size": "45 m²"
+      },
+      {
+        "id": "room_16",
+        "hotel_id": "hotel_4",
+        "name": "Executive King",
+        "capacity": 2,
+        "beds": ["king"],
+        "features": ["wifi", "tv", "ac", "work_desk", "city_view"],
+        "size": "42 m²"
+      },
+      {
+        "id": "room_17",
+        "hotel_id": "hotel_4",
+        "name": "Business Suite",
+        "capacity": 3,
+        "beds": ["king", "work_area"],
+        "features": ["wifi", "multiple_tvs", "ac", "office_setup", "conference_table"],
+        "size": "55 m²"
+      },
+      {
+        "id": "room_18",
+        "hotel_id": "hotel_4",
+        "name": "Standard Queen",
+        "capacity": 2,
+        "beds": ["queen"],
+        "features": ["wifi", "tv", "ac", "comfortable", "efficient"],
+        "size": "35 m²"
+      },
+      {
+        "id": "room_19",
+        "hotel_id": "hotel_4",
+        "name": "Corner Suite",
+        "capacity": 4,
+        "beds": ["king", "sofa"],
+        "features": ["wifi", "tv", "ac", "corner_windows", "great_views"],
+        "size": "65 m²"
+      },
+      {
+        "id": "room_20",
+        "hotel_id": "hotel_4",
+        "name": "Accessible Room",
+        "capacity": 2,
+        "beds": ["queen"],
+        "features": ["wifi", "tv", "ac", "wheelchair_accessible", "roll_in_shower"],
+        "size": "40 m²"
+      },
+      {
+        "id": "room_21",
+        "hotel_id": "hotel_5",
+        "name": "Garden View Room",
+        "capacity": 2,
+        "beds": ["queen"],
+        "features": ["wifi", "tv", "garden_view", "peaceful", "natural_light"],
+        "size": "38 m²"
+      },
+      {
+        "id": "room_22",
+        "hotel_id": "hotel_5",
+        "name": "Family Suite",
+        "capacity": 4,
+        "beds": ["queen", "bunk"],
+        "features": ["wifi", "tv", "family_amenities", "spacious", "play_area"],
+        "size": "52 m²"
+      },
+      {
+        "id": "room_23",
+        "hotel_id": "hotel_5",
+        "name": "Standard Double",
+        "capacity": 2,
+        "beds": ["double"],
+        "features": ["wifi", "tv", "comfortable", "good_value"],
+        "size": "33 m²"
+      },
+      {
+        "id": "room_24",
+        "hotel_id": "hotel_5",
+        "name": "Premium King",
+        "capacity": 2,
+        "beds": ["king"],
+        "features": ["wifi", "tv", "premium_linens", "enhanced_amenities"],
+        "size": "45 m²"
+      },
+      {
+        "id": "room_25",
+        "hotel_id": "hotel_5",
+        "name": "Patio Room",
+        "capacity": 2,
+        "beds": ["queen"],
+        "features": ["wifi", "tv", "private_patio", "garden_access"],
+        "size": "42 m²"
+      }
+    ],
+    
+    "rate_plans": [
+      {
+        "id": "rate_1",
+        "hotel_id": "hotel_1",
+        "room_type_id": "room_1",
+        "title": "Standard Rate",
+        "meal": "RO",
+        "refundable": true,
+        "cancel_before_days": 2,
+        "description": "Flexible rate with free cancellation"
+      },
+      {
+        "id": "rate_2",
+        "hotel_id": "hotel_1",
+        "room_type_id": "room_1",
+        "title": "Non-refundable",
+        "meal": "RO",
+        "refundable": false,
+        "cancel_before_days": null,
+        "description": "Best price, non-refundable"
+      },
+      {
+        "id": "rate_3",
+        "hotel_id": "hotel_2",
+        "room_type_id": "room_6",
+        "title": "Beach Package",
+        "meal": "BB",
+        "refundable": true,
+        "cancel_before_days": 3,
+        "description": "Includes breakfast and beach amenities"
+      }
+    ],
+    
+    "prices": [
+      {
+        "id": "price_1",
+        "rate_id": "rate_1",
+        "date": "2024-01-15",
+        "amount": 250,
+        "currency": "USD"
+      },
+      {
+        "id": "price_2",
+        "rate_id": "rate_1",
+        "date": "2024-01-16",
+        "amount": 250,
+        "currency": "USD"
+      }
+    ],
+    
+    "availability": [
+      {
+        "id": "avail_1",
+        "room_type_id": "room_1",
+        "date": "2024-01-15",
+        "available": 5
+      },
+      {
+        "id": "avail_2",
+        "room_type_id": "room_1",
+        "date": "2024-01-16",
+        "available": 5
+      }
+    ],
+    
+    "guests": [
+      {
+        "id": "guest_1",
+        "name": "John Smith", 
+        "email": "john.smith@email.com"
+      },
+      {
+        "id": "guest_2",
+        "name": "Maria Garcia",
+        "email": "maria.garcia@email.com"
+      }
+    ],
+    
+    "rules": [
+      {
+        "id": "rule_1",
+        "kind": "meal_inheritance", 
+        "payload": {"default_meal": "RO"}
+      }
+    ]
+  }
